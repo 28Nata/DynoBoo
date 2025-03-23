@@ -1,0 +1,708 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    background-color: #2d6a4f;
+    padding: 15px;
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Sidebar */
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+.sidebar-logo img {
+    width: 120px;
+    height: auto;
+}
+
+/* Footer Sidebar */
+.sidebar-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
+    color: white;
+}
+
+.login-button {
+    background-color: #40916c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    z-index: 1001;
+    position: relative;
+}
+
+.login-button:hover {
+    background-color: #2d6a4f;
+}
+
+.login-text {
+    color: white;
+    text-decoration: none;
+}
+
+.login-text a {
+    color:white;
+    text-decoration: underline;
+}
+
+.login-text a:hover {
+    color: #8E24AA; /* Warna saat hover */
+}
+
+/* LOGO + MENU BUTTON */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-right {
+    display: flex;
+    gap: 10px; /* Jarak antar ikon */
+}
+
+.icon-link {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.icon-link:hover {
+    transform: scale(1.1);
+}
+
+
+/* MENU BUTTON */
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+/* Order button diatur agar ada jarak lebih besar */
+.order-container {
+    margin-bottom: 160px; /* Jarak lebih jauh dari dino */
+}
+
+/* Gambar Dino Besar (kanan) */
+.dino-big {
+    width: 300px; /* Perbesar */
+    position: absolute;
+    bottom: 0; /* Pastikan berada di atas footer */
+    right: 8%; /* Sesuaikan posisi */
+    z-index: 1;
+    transform: scale(1.2);
+    margin-top: 1000px; /* Jarak antara Order Here dan dino */
+}
+
+/* Gambar Dino Kecil (di kiri Dino Besar) */
+.dino-small {
+    width: 150px; /* Perbesar sedikit */
+    position: absolute;
+    bottom: 10px; /* Pastikan berada di atas footer */
+    right: 35%; /* Geser lebih ke kiri */
+    z-index: 1;
+    transform: scale(1.1);
+    margin-top: 50px; /* Jarak dari Order Here */
+}
+;
+
+.dino-img {
+    width: 200px; /* Ukuran gambar */
+}
+
+
+
+/* Efek Floating untuk Dino */
+@keyframes floatDino {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Terapkan animasi ke dinosaurus */
+.dino-big, .dino-small {
+    animation: floatDino 3s ease-in-out infinite;
+}
+
+/* Efek Fade-in saat Landing Page Muncul */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+    animation: fadeIn 1s ease-out;
+}
+
+
+/* WISHLIST & KERANJANG */
+.nav-right {
+    display: flex;
+    gap: 15px;
+    padding-right: 20px;
+    margin-left: auto;
+}
+
+.nav-right a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-right a:hover {
+    transform: scale(1.1);
+}
+
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #2d6a4f;
+    color: white;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+    z-index: 9999; /* Pastikan sidebar di atas elemen lain */
+}
+
+/* Ketika sidebar terbuka */
+.sidebar.open {
+    left: 0;
+}
+
+/* Tombol Close */
+.sidebar .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Tambahkan Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9998; /* Lebih rendah dari sidebar tapi tetap di atas produk */
+}
+
+/* Saat sidebar terbuka, overlay muncul */
+.sidebar.open ~ .overlay {
+    display: block;
+}
+
+/* MENU LIST */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+/* ICON MENU */
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    margin: 0 5px;
+}
+.icon-button:focus {
+    outline: none;
+}
+
+
+/* HERO SECTION */
+.hero {
+    margin: 50px auto;
+    padding: 20px;
+    text-align: left;
+    max-width: 600px;
+    margin-left: 20px;
+}
+
+.hero h1 {
+    font-size: 28px;
+    color: #2d6a4f;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    font-size: 48px;
+    display: block;
+    color: #40916c;
+}
+
+.hero p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: justify;
+    max-width: 400px;
+    line-height: 2;
+}
+
+/* ORDER BUTTON */
+.order-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button:hover {
+    background-color: #40916c;
+}
+
+/* DINO IMAGE */
+.dino-img {
+    width: 180px;
+    display: block;
+    margin-top: 20px;
+}
+
+
+
+
+
+/* FOOTER */
+.footer {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 0 20px;
+}
+
+/* Bagian Footer */
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+/* Logo */
+.footer-logo img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+/* Deskripsi */
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Navigasi Footer */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 8px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Bagian Sosial Media */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: #a8dadc; /* Warna saat hover */
+}
+
+/* Copyright */
+.footer-text {
+    font-size: 12px;
+    opacity: 0.8;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+
+/* Product.html */
+/* ----- Container Utama ----- */
+.container {
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+
+/* ----- Produk ----- */
+.product {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 35px; /* Tambahkan ruang agar badge tidak tertimpa */
+    transition: transform 0.3s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ----- Badge "NEW" ----- */
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    background: green;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* ----- Gambar Produk ----- */
+.image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image:hover img {
+    transform: scale(1.1);
+}
+
+/* ----- Tombol Keranjang ----- */
+.cart-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    z-index: 5;
+}
+
+.cart-btn:hover {
+    background: green;
+    animation: bounce 0.4s ease-in-out;
+}
+
+/* ----- Detail Produk ----- */
+.details h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.stars {
+    font-size: 12px;
+    color: gold;
+    margin-bottom: 5px;
+}
+
+.price {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ----- Sidebar Keranjang ----- */
+.cart-sidebar {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 320px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+/* ----- Tombol "X" hanya muncul saat kursor ke kanan ----- */
+.close-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.cart-sidebar:hover .close-cart {
+    opacity: 1;
+}
+
+/* ----- Item di Keranjang ----- */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cart-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.cart-details {
+    flex-grow: 1;
+}
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-controls button {
+    margin: 0 5px;
+    padding: 5px 8px;
+    cursor: pointer;
+    border: none;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.total-price {
+    font-size: 20px;
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* ----- Animasi ----- */
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Efek tombol keranjang saat hover */
+.cart-btn {
+    transition: background 0.3s, transform 0.3s;
+}
+
+.cart-btn:hover {
+    background: green;
+    animation: bounce 0.4s ease-in-out;
+}
+
+/* Efek saat hover */
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Animasi muncul saat halaman dimuat */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Terapkan animasi saat halaman dimuat */
+.product {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Efek hover untuk produk */
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efek hover untuk gambar */
+.image img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.image:hover img {
+    transform: scale(1.1);
+}
+
+/* ----- Responsif ----- */
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .product {
+        padding: 10px;
+        padding-top: 40px; /* Tambah jarak di atas untuk badge */
+    }
+
+    .image img {
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 4px 10px;
+        top: -10px; /* Sesuaikan posisi badge agar tetap terlihat */
+    }
+
+    .cart-btn {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .cart-sidebar {
+        width: 280px;
+    }
+}
