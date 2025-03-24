@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* Tombol Login */
-    loginButton?.addEventListener("click", function (event) {
-        event.stopPropagation();
-        alert("Tombol Masuk / Daftar ditekan!");
-    });
+    // loginButton?.addEventListener("click", function (event) {
+    //     event.stopPropagation();
+    //     alert("Tombol Masuk / Daftar ditekan!");
+    // });
 
     /* Footer Link Peringatan */
     document.querySelectorAll(".footer-links a").forEach(link => {
